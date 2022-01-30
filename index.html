@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Pendekatan Pendapatan Nasional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@400;600&display=swap">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1 class="heading">Kalkulator Pendekatan Pendapatan Nasional</h1>
+    </header>
+    <section class="content">
+        <div class="block block--dark block--income block--production-income">
+            <p class="block__tagline">Pendekatan Produksi</p>
+            <div class="income-inputs">
+                <div class="input__block">
+                    <p class="input__information">P1</p>
+                    <input type="number" min="0" class="input__income p1-value">
+                </div>
+                <div class="input__block">
+                    <p class="input__information">Q1</p>
+                    <input type="number" min="0" class="input__income q1-value">
+                </div>
+            </div>
+            <div class="income-inputs">
+                <div class="input__block">
+                    <p class="input__information">P2</p>
+                    <input type="number" min="0" class="input__income p2-value">
+                </div>
+                <div class="input__block">
+                    <p class="input__information">Q2</p>
+                    <input type="number" min="0" class="input__income q2-value">
+                </div>
+            </div>
+            <div class="btn--container">
+                <button class="btn btn--primary btn--calculate">Hitung</button>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="block block--result block--production-income-result">
+            <p class="block__tagline">Hasil</p>
+            <div class="calculations-result">
+                <p class="result__content">Pendapatan Nasional: -</p>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="block block--dark block--income block--income-approach">
+            <p class="block__tagline">Pendekatan Produksi</p>
+            <div class="income-inputs">
+                <div class="input__block">
+                    <p class="input__information">Sewa</p>
+                    <input type="number" min="0" class="input__income sewa-value">
+                </div>
+                <div class="input__block">
+                    <p class="input__information">Upah</p>
+                    <input type="number" min="0" class="input__income wages-value">
+                </div>
+            </div>
+            <div class="income-inputs">
+                <div class="input__block">
+                    <p class="input__information">Bunga</p>
+                    <input type="number" min="0" class="input__income bunga-value">
+                </div>
+                <div class="input__block">
+                    <p class="input__information">Laba</p>
+                    <input type="number" min="0" class="input__income laba-value">
+                </div>
+            </div>
+            <div class="btn--container">
+                <button class="btn btn--primary btn--calculate">Hitung</button>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="block block--result block--income-approach-result">
+            <p class="block__tagline">Hasil</p>
+            <div class="calculations-result">
+                <p class="result__content">Yield: -</p>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="block block--dark block--income block--production-approach">
+            <p class="block__tagline">Pendekatan Produksi</p>
+            <div class="income-inputs">
+                <div class="input__block">
+                    <p class="input__information">Konsumsi Masyarakat</p>
+                    <input type="number" min="0" class="input__income konsumsi-masyarakat-value">
+                </div>
+                <div class="input__block">
+                    <p class="input__information">Investasi</p>
+                    <input type="number" min="0" class="input__income investasi-value">
+                </div>
+            </div>
+            <div class="income-inputs">
+                <div class="input__block">
+                    <p class="input__information">Pengeluaran Negara</p>
+                    <input type="number" min="0" class="input__income pengeluaran-negara-value">
+                </div>
+                <div class="input__block">
+                    <p class="input__information">Ekspor</p>
+                    <input type="number" min="0" class="input__income ekspor-value">
+                </div>
+            </div>
+            <div class="income-inputs">
+                <div class="input__block">
+                    <p class="input__information">Impor</p>
+                    <input type="number" min="0" class="input__income impor-value">
+                </div>
+            </div>
+            <div class="btn--container">
+                <button class="btn btn--primary btn--calculate">Hitung</button>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="block block--result block--production-approach-result">
+            <p class="block__tagline">Hasil</p>
+            <div class="calculations-result">
+                <p class="result__content">Yield: -</p>
+            </div>
+        </div>
+    </section>
+    <footer class="block block--footer">
+        <a class="btn btn--primary" href="https://forms.gle/pjjxFyGPU7tUtirX8" target="_blank">Kirim Pesan</a>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
