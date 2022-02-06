@@ -2,10 +2,10 @@ const productionIncomeInputs = document.querySelectorAll(".block--production-inc
 const productionIncomeResultContent = document.querySelector(".block--production-income-result .result__content")
 const productionIncomeCalculateButton = document.querySelector(".block--production-income .btn--calculate")
 const incomeApproachInputs = document.querySelectorAll(".block--income-approach .input__income")
-const incomeApproachResultContent = document.querySelector(".block--income-approach-result .result__content")
+const incomeApproachResultContents = document.querySelectorAll(".block--income-approach-result .result__content")
 const incomeApproachCalculateButton = document.querySelector(".block--income-approach .btn--calculate")
 const productionApproachInputs = document.querySelectorAll(".block--production-approach .input__income")
-const productionApproachResultContent = document.querySelector(".block--production-approach-result .result__content") 
+const productionApproachResultContents = document.querySelectorAll(".block--production-approach-result .result__content") 
 const productionApproachCalculateButton = document.querySelector(".block--production-approach .btn--calculate")
 
 productionIncomeCalculateButton.addEventListener("click", function() {
@@ -29,8 +29,8 @@ productionIncomeCalculateButton.addEventListener("click", function() {
 })
 
 incomeApproachCalculateButton.addEventListener("click", function() {
-    let incomeApproachResult = 0
     let incomeApproachValues = [
+        {terms: "Yield", value: 0},
         {terms: "Sewa", value: 0},
         {terms: "Upah", value: 0},
         {terms: "Bunga", value: 0},
@@ -44,13 +44,24 @@ incomeApproachCalculateButton.addEventListener("click", function() {
         }
     }
 
-    incomeApproachResult = validateNumber(incomeApproachValues[0].value + incomeApproachValues[1].value + incomeApproachValues[2].value + incomeApproachValues[3].value)
-    incomeApproachResultContent.textContent = `Yield: ${String(formatNumber(incomeApproachResult))}`
+    for (let i = 0; i < incomeApproachValues.length; i++) {
+        if (incomeApproachValues[i].value == 0) {
+            if (i == 0) incomeApproachValues[i].value = validateNumber(addValues(incomeApproachValues[1], incomeApproachValues[2], incomeApproachValues[3], incomeApproachValues[4]))
+            if (i == 1) incomeApproachValues[i].value = validateNumber(subtractValues(incomeApproachValues[0], incomeApproachValues[2], incomeApproachValues[3], incomeApproachValues[4]))
+            if (i == 2) incomeApproachValues[i].value = validateNumber(subtractValues(incomeApproachValues[0], incomeApproachValues[1], incomeApproachValues[3], incomeApproachValues[4]))
+            if (i == 3) incomeApproachValues[i].value = validateNumber(subtractValues(incomeApproachValues[0], incomeApproachValues[1], incomeApproachValues[2], incomeApproachValues[4]))
+            if (i == 4) incomeApproachValues[i].value = validateNumber(subtractValues(incomeApproachValues[0], incomeApproachValues[1], incomeApproachValues[2], incomeApproachValues[3]))
+        }
+    }
+
+    for (let i = 0; i < incomeApproachResultContents.length; i++) {
+        incomeApproachResultContents[i].textContent = `${String(incomeApproachValues[i].terms)}: ${String(formatNumber(incomeApproachValues[i].value))}`
+    }
 })
 
 productionApproachCalculateButton.addEventListener("click", function() {
-    let productionApproachResult = 0
     let productionApproachValues = [
+        {terms: "Yield", value: 0},
         {terms: "Konsumsi Masyarakat", value: 0},
         {terms: "Investasi", value: 0},
         {terms: "Pengeluaran Negara", value: 0},
@@ -65,9 +76,37 @@ productionApproachCalculateButton.addEventListener("click", function() {
         }
     }
 
-    productionApproachResult = validateNumber(productionApproachValues[0].value + productionApproachValues[1].value + (productionApproachValues[2].value + (productionApproachValues[3].value - productionApproachValues[4].value)))
-    productionApproachResultContent.textContent = `Yield: ${String(formatNumber(productionApproachResult))}`
+    for (let i = 0; i < productionApproachValues.length; i++) {
+        if (productionApproachValues[i].value == 0) {
+            if (i == 0) productionApproachValues[i].value = validateNumber(addSubtractValues(productionApproachValues[1], productionApproachValues[2], productionApproachValues[3], productionApproachValues[4], productionApproachValues[5]))
+            if (i == 1) productionApproachValues[i].value = validateNumber(subtractAddValues(productionApproachValues[0], productionApproachValues[2], productionApproachValues[3], productionApproachValues[4], productionApproachValues[5]))
+            if (i == 2) productionApproachValues[i].value = validateNumber(subtractAddValues(productionApproachValues[0], productionApproachValues[1], productionApproachValues[3], productionApproachValues[4], productionApproachValues[5]))
+            if (i == 3) productionApproachValues[i].value = validateNumber(subtractAddValues(productionApproachValues[0], productionApproachValues[1], productionApproachValues[2], productionApproachValues[4], productionApproachValues[5]))
+            if (i == 4) productionApproachValues[i].value = validateNumber(subtractAddValues(productionApproachValues[0], productionApproachValues[1], productionApproachValues[2], productionApproachValues[3], productionApproachValues[5]))
+            if (i == 5) productionApproachValues[i].value = validateNumber(subtractAddValues(productionApproachValues[1], productionApproachValues[2], productionApproachValues[3], productionApproachValues[4], productionApproachValues[0]))
+        }
+    }
+
+    for (let i = 0; i < productionApproachResultContents.length; i++) {
+        productionApproachResultContents[i].textContent = `${String(productionApproachValues[i].terms)}: ${String(formatNumber(productionApproachValues[i].value))}`
+    }
 })
+
+function addValues(a, b, c, d) {
+    return a.value + b.value + c.value + d.value
+}
+
+function subtractValues(a, b, c, d) {
+    return a.value - b.value - c.value - d.value
+}
+
+function addSubtractValues(a, b, c, d, e) {
+    return a.value + b.value + c.value + d.value - e.value
+}
+
+function subtractAddValues(a, b, c, d, e) {
+    return a.value - b.value - c.value - d.value + e.value    
+}
 
 function formatNumber(number) {
     let parts = number.toString().split(".");
